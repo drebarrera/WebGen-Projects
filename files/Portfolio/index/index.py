@@ -1,7 +1,9 @@
 import modules as mx
 import sys
 import importlib
-sys.path.append(r'C:\Users\dreba\Documents\GitHub\WebGen\files\Portfolio')
+import os
+homedir = os.getcwd() + r'/files/Portfolio/'
+sys.path.append(homedir)
 from prop import *
 info = info()
 data = mx.Data()

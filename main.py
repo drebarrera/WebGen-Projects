@@ -68,7 +68,7 @@ def f(folder, filename):
     if not os.path.exists(path+filename+".py"):
         ftxt = open(path+filename+".py", 'a')
         if g == False:
-            ftxt.write("import modules as mx\nimport sys\nsys.path.append(r'"+os.getcwd()+"\\files\\"+folder+"')\ndata = mx.Data()\nbody = mx.Body()\n\n### OBJECTS ###\n\n### CONTENT ###\n\n### PROPERTIES ###")
+            ftxt.write("import modules as mx\nimport sys\nimport os\nhomedir = os.getcwd() + r'/files/Portfolio/'\nsys.path.append(homedir)\ndata = mx.Data()\nbody = mx.Body()\n\n### OBJECTS ###\n\n### CONTENT ###\n\n### PROPERTIES ###")
         else:
             ftxt.write("import modules as mx\n\n### OBJECTS ###\n\n### CONTENT ###\n\n### PROPERTIES ###")
     else:
@@ -92,10 +92,6 @@ def f(folder, filename):
         print("-", end="")
         sleep(0.02)
     print("\n")
-    #if sys.platform == "win32":
-    #    subprocess.Popen(["notepad.exe", path+filename+".py"])
-    #elif sys.platform == "darwin":
-    #    subprocess.call(['open', '-a', 'TextEdit', path+filename+".py"])
     fedit(folder,filename,g)
 
 def kill(folder):
@@ -202,12 +198,12 @@ def fedit(folder,filename,g):
                     if sys.platform == "win32":
                         subprocess.Popen(["notepad.exe", path+filename+".py"])
                     elif sys.platform == "darwin":
-                        subprocess.call(['open', '-a', 'TextEdit', path+filename+".py"])
+                        subprocess.call(['open', '-a', 'IDLE 3', path+filename+".py"])
                 else:
                     if sys.platform == "win32":
                         subprocess.Popen(["notepad.exe", "files/"+folder+"/"+filename+".py"])
                     elif sys.platform == "darwin":
-                        subprocess.call(['open', '-a', 'TextEdit', "files/"+folder+"/"+filename+".py"])
+                        subprocess.call(['open', '-a', 'IDLE 3', "files/"+folder+"/"+filename+".py"])
             elif cmd == "images":
                 if g == False:
                     if not os.path.exists("files/"+folder+"/"+filename+"/images"):
