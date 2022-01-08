@@ -196,14 +196,34 @@ def fedit(folder,filename,g):
             elif cmd == "e":
                 if(g == False):
                     if sys.platform == "win32":
-                        subprocess.Popen(["notepad.exe", path+filename+".py"])
+                        try:
+                            subprocess.Popen([sys.exec_prefix+r"\Lib\idlelib\idle.bat", path+filename+".py"])
+                        except Exception as exc:
+                            print(exc)
+                            print('opening notepad.exe as subtitute...')
+                            subprocess.Popen(["notepad.exe", path+filename+".py"])
                     elif sys.platform == "darwin":
-                        subprocess.call(['open', '-a', 'IDLE 3', path+filename+".py"])
+                        try:
+                            subprocess.call(['open', '-a', 'IDLE 3', path+filename+".py"])
+                        except Exception as exc:
+                            print(exc)
+                            print('opening TextEdit as subtitute...')
+                            subprocess.call(['open', '-a', 'TextEdit', path+filename+".py"])
                 else:
                     if sys.platform == "win32":
-                        subprocess.Popen(["notepad.exe", "files/"+folder+"/"+filename+".py"])
+                        try:
+                            subprocess.Popen([sys.exec_prefix+r"\Lib\idlelib\idle.bat", "files/"+folder+"/"+filename+".py"])
+                        except Exception as exc:
+                            print(exc)
+                            print('opening notepad.exe as subtitute...')
+                            subprocess.Popen(["notepad.exe", "files/"+folder+"/"+filename+".py"])
                     elif sys.platform == "darwin":
-                        subprocess.call(['open', '-a', 'IDLE 3', "files/"+folder+"/"+filename+".py"])
+                        try:
+                            subprocess.call(['open', '-a', 'IDLE 3', "files/"+folder+"/"+filename+".py"])
+                        except Exception as exc:
+                            print(exc)
+                            print('opening TextEdit as subtitute...')
+                            subprocess.call(['open', '-a', 'TextEdit', "files/"+folder+"/"+filename+".py"])
             elif cmd == "images":
                 if g == False:
                     if not os.path.exists("files/"+folder+"/"+filename+"/images"):
