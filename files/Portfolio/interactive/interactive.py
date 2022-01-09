@@ -123,7 +123,7 @@ slide2GalleryT2 = mx.T()
 
 ### CONTENT ###
 # Body
-body.content = [center, contactA, slideScrollMsg]
+body.content = [slideScrollMsg, center, contactA]
 
 # Center
 center.content = [main, alert]
@@ -259,6 +259,7 @@ contactA.src = 'https://www.drebarrera.com/contact/'
 slideScrollMsg.id = 'slideScrollMsg'
 slideScrollMsg.color = '#d8d8d8'
 slideScrollMsg.font_weight = '700'
+slideScrollMsg.z_index = '100'
 
 # Main
 main.overflow_y = 'hidden'

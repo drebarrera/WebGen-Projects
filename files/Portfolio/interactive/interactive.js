@@ -18,14 +18,13 @@ $(document).ready(function(){
 		if(go == 1){
 			$('#mainClouds').animate({
 				'background-position-x': '-=100%'
-			}, 300000, "linear", function(){
-				clouds();
-			});
+			}, 300000, "linear");
 		}
 	}
-	clouds();
 	
-		
+	clouds();
+	setInterval(clouds, 300000);
+	
 	/// TrackMain Hover /// 
 	$('.trackMain').mouseover(function(){
 		var id = $(this).attr("id");
