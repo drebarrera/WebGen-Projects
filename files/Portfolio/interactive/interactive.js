@@ -120,6 +120,9 @@ $(document).ready(function(){
 				$('#slide1Textbox').css('opacity',0);
 				$('#slide1Textbox').css('top','5vh');
 				$("#main").scrollTop(1);
+				$("#center").delay(800).animate({
+					backgroundColor: "#fff"
+				},1000);
 				setTimeout(function(){
 					$('#trainRedMain').show();
 				}, 1800);
@@ -136,6 +139,9 @@ $(document).ready(function(){
 				$('#slide1Textbox').css('opacity',0);
 				$('#slide1Textbox').css('top','5vh');
 				$("#main").scrollTop(1);
+				$("#center").delay(800).animate({
+					backgroundColor: "#fff"
+				},1000);
 				setTimeout(function(){
 					$('#trainBlueMain').show();
 				}, 1800);
@@ -152,6 +158,9 @@ $(document).ready(function(){
 				$('#slide1Textbox').css('opacity',0);
 				$('#slide1Textbox').css('top','5vh');
 				$("#main").scrollTop(1);
+				$("#center").delay(800).animate({
+					backgroundColor: "#fff"
+				},1000);
 				setTimeout(function(){
 					$('#trainYellowMain').show();
 				}, 1800);
@@ -334,6 +343,11 @@ $(document).ready(function(){
 							top: "0vh",
 							opacity: 1
 						}, 800);
+						if(scrollCoeff == 0){
+							$("#center").animate({
+								backgroundColor: "#efefef"
+							},1000);
+						}
 					});
 					setTimeout(function(){
 						if(scrollCoeff != 0){

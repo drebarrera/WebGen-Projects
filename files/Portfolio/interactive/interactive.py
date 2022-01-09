@@ -1,6 +1,8 @@
 import modules as mx
 import sys
-sys.path.append(r"C:\Users\dreba\Documents\GitHub\WebGen\files\Portfolio")
+import os
+homedir = os.getcwd() + r'/files/Portfolio/'
+sys.path.append(homedir)
 from prop import *
 info = info()
 data = mx.Data()
@@ -118,8 +120,6 @@ slide7TopA2 = mx.C()
 slide7TopT2 = mx.T()
 slide2GalleryA2 = mx.Link()
 slide2GalleryT2 = mx.T()
-#musicSlide = mx.C()
-#musicBar = mx.X()
 
 ### CONTENT ###
 # Body
@@ -239,7 +239,6 @@ slide7Text2.content = 'I am no stranger to Computer Aided Design. With six years
 
 ### PROPERTIES ###
 # Body
-body.background_color = '#green'
 body.overflow_y = 'hidden'
 body.overflow_x = 'hidden'
 
@@ -247,7 +246,8 @@ body.overflow_x = 'hidden'
 center.display = 'flex'
 center.justify_content = 'center'
 center.background_color = 'white'
-center.background_color = '#242323'
+center.background_color = ''
+center.id = 'center'
 
 # contact
 contactA.id = 'contactFloat'
@@ -265,8 +265,8 @@ main.overflow_y = 'hidden'
 main.overflow_x = 'hidden'
 main.id = 'main'
 main.display = 'flex'
+main.background_color = ''
 main.justify_content = 'center'
-main.background_color = '#efefef'
 mainLayer0.background_color = '#efefef'
 mainLayer0.id = 'mainLayer0'
 trackRedMain.id = 'trackRedMain'
