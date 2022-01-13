@@ -109,6 +109,7 @@ file_put_contents('../data/visitInfo.txt', $visitInfo, FILE_APPEND); ?><!DOCTYPE
 	/// Start Click /// 
 	$('#mainInstructions > span').click(function(){
 		var winHeight = jQuery("#main").height();
+		scrollReady = 1;
 		if(track == 0){
 			alert('Please select a track by clicking to the left and then try "Start!" again.');
 		}
@@ -281,7 +282,7 @@ file_put_contents('../data/visitInfo.txt', $visitInfo, FILE_APPEND); ?><!DOCTYPE
 				return '';
 			}
 		}
-		if (scrollDirection < 0){		
+		if (scrollDirection < 0){	
 			if (scrollReady == 1) {
 				scrollCoeff = scrollCoeff + 1;
 				scrollReady = 0;

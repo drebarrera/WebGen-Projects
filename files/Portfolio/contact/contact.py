@@ -1,9 +1,10 @@
 import modules as mx
 import sys
-sys.path.append(r'C:\Users\dreba\Documents\GitHub\WebGen\files\Portfolio')
+import os
+homedir = os.getcwd() + r'/files/Portfolio/'
+sys.path.append(homedir)
 data = mx.Data()
 body = mx.Body()
-
 from header import *
 from contact import *
 from forms import *

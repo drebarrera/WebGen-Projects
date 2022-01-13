@@ -7,3 +7,5 @@ forms.py
 visitInfo.py
 visitInfoIndex.py
 colorUI.py
+alpen-aerial.py
+alpenaerial.py
