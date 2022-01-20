@@ -1,0 +1,36 @@
+p{
+	margin-block-start: 0em;
+	margin-block-end: 0em;
+}
+
+#center{
+	width: 100vw;
+	height: 100vh;
+	background-position: center;
+	background-image: url("images/santafe.jpeg");
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#linkBox{
+	max-width: 500px;
+	height: auto;
+	width: 100%;
+	display: block;
+}
+
+#linkBox > a > p{
+	color: white;
+	width: 100%;
+	display: block;
+	text-align: center;
+	background-color: rgba(0,0,0,0.5);
+	font-size: 3vh;
+	padding: 10px;
+}
+
+#linkBox > a > p:hover{
+	background-color: rgba(0,0,0,0.8);
+}
