@@ -18,7 +18,7 @@ file_put_contents('../data/visitInfo.txt', $visitInfo, FILE_APPEND); ?><?php if(
         $visitInfo .= ','.date("Y-m-d;h:i:sA").','.$email.PHP_EOL;
 	
         	$mailBody="Admin: $name\nProject: $project\nCompany: $company\nClient Contact: $contact\nContact Email: $clientEmail\nContact Phone: $clientPhone\n\nProject Description:\n$description\n\n$visitInfo";
-		mail($recipient, $subject, $mailBody, "From: $name");
+		mail($recipient, $subject, $mailBody, "From: $name <dreebarrera@gmail.com>");
 		$thankYou="<p>Thank you! Your message has been sent.</p>";
 }
 

@@ -1,0 +1,90 @@
+#main{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#container{
+	width: 90%;
+	margin-top: 22vh;
+	font-size: 2.5vh;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+#caption{
+	max-width: 900px;
+	width: 100%;
+	display: inline-block;
+	position: relative;
+}
+
+#form{
+	border-radius: 4vh;
+	padding: 2vh;
+	padding-bottom: 12vh;
+	width: 100%;
+}
+
+#title{
+	max-width: 900px;
+	width: 100%;
+	display: inline-block;
+	position: relative;
+	font-size: 4vh;
+	margin-top: 1vh;
+	color: #ff5938;
+	margin-bottom: 25px;
+}
+
+#contact{
+	width: 90%;
+	margin-left: 2.5%;
+	margin-top: 25px;
+	border-radius: 3vh;
+	padding: 4%;
+}
+
+label{
+	color: white;
+}
+
+#formTable{
+	background-color: white;
+	font-size: 2.5vh;
+	border-radius: 4px;
+	width: 100%;
+	text-align: center;
+	display: block;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	border-collapse: collapse;
+	margin-bottom: 2vh;
+}
+
+#formTable > tbody > tr > td, th{
+	padding: 1vh;
+	border-right: 2px solid #ededed;
+}
+
+#formTable > tbody{
+	width: 330vh;
+	display: block;
+	position: relative;
+}
+
+#formTable_0_0{
+	width: 10vh;
+	border-bottom: 2px solid #ededed;
+}
+
+#formTable_0_1, #formTable_0_2, #formTable_0_3, #formTable_0_4, #formTable_0_5, #formTable_0_6{
+	width: 35vh;
+	border-bottom: 2px solid #ededed;
+}
+
+#formTable_0_7, #formTable_0_8{
+	width: 60vh;
+	border-bottom: 2px solid #ededed;
+}

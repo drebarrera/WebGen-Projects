@@ -9,11 +9,13 @@ input[type=text], select, textarea {
 	margin-bottom: 16px; /* Bottom margin */
 	resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 	font-size: 1.75vh;
+	-webkit-appearance:none;
 }
 
-input{
+input, option{
 	font-family: monospace;
 	font-size: 1.75vh;
+	-webkit-appearance:none;
 }
 
 /* Style the submit button with a specific background color etc */
