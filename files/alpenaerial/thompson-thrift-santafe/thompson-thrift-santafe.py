@@ -26,10 +26,6 @@ link1.content = [link1T]
 link1T.content = 'TrailLink - About the Trail'
 link2.content = [link2T]
 link2T.content = 'El Paso County - New Santa Fe Regional Trail'
-link3.content = [link3T]
-link3T.content = 'Best Colleges - United States Air Force Academy'
-link4.content = [link4T]
-link4T.content = 'CBS Denver - USAFA COVID-19 Policy'
 
 ### PROPERTIES ###
 center.id = 'center'
