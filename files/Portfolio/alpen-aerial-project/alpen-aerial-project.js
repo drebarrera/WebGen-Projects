@@ -7,16 +7,19 @@ $(document).ready(function(){
 	?>
 
     clients = {};
-    
 	for(var i = 0; i < companies.length; i++){
 	    if(companies[i] != '.' && companies[i] != '..'){
-	        client = companies[i].replace('.txt','').replaceAll('_',' ').split('-')[0];
+	        client = companies[i].replace('.txt','').replace('_',' ').split('-')[0];
 	        project = companies[i].replace('.txt','').replaceAll('_',' ').split('-')[1];
-		    $('#clientSelect').append('<option>'+client+'<\option>');
+	        for(var j = 1; j < $('#clientSelect').children().length; j++){
+			    if($('#clientSelect').children().eq(j).val() == ''){
+	                $('#clientSelect').children().eq(j).remove();
+	            }
+			}
+			if(clients[client] == null){
+		        $('#clientSelect').append('<option>'+client+'<\option>');
+			}
 		    clients[client] == null ? clients[client] = [project] : clients[client].push(project);
-		    if($('#clientSelect').children().last().val() == ''){
-		        $('#clientSelect').children().last().remove();
-		    }
 	    }
 	}
 	
@@ -33,13 +36,17 @@ $(document).ready(function(){
         <?php $content = file_get_contents($txt_url); ?>
     	<?php echo "var formContent = '". $content . "';\n"; ?>
     	$('#clientSelect').val(company_name);
+    	$('#projectSelect > option').remove();
+		$('#projectSelect').append('<option><\option><option>New Project</option>');
 		for(var i = 0; i < clients[$('#clientSelect').val()].length; i++){
 			company = $('#clientSelect').val();
 			project = clients[company][i];
 			$('#projectSelect').append('<option>'+project+'<\option>');
-			if($('#clientSelect').children().last().val() == ''){
-	            $('#clientSelect').children().last().remove();
-	        }
+			for(var j = 1; j < $('#projectSelect').children().length; j++){
+			    if($('#projectSelect').children().eq(j).val() == ''){
+	                $('#projectSelect').children().eq(j).remove();
+	            }
+			}
 		}
 		$('#projectSelect').val(project_name);
 		var content = formContent.split('xxiixx');
@@ -55,7 +62,7 @@ $(document).ready(function(){
 		var addCount = 0;
 		for(var i = 1; i < content.length - 1; i++){
 		    content_num = content[i].split('xxixx');
-		    $('#formTable_1').before('<tr id="formTableAdd_'+addCount+'"><td id="<td id="formTableAdd_'+addCount+'_0"><p class="button buttonRedRing del">X</p></td><td id="formTableAdd_'+addCount+'_1"><input type="text" name="old_'+addCount+'_1" required></td><td id="formTableAdd_'+addCount+'_2"><select type="text" name="old_'+addCount+'_2"><option>Text</option><option>Image</option><option>Text + Location</option><option>Text + Image</option></select></td><td id="formTableAdd_'+addCount+'_3"><select type="text" name="old_'+addCount+'_3" required><option>Clickable</option><option>Not Clickable</option></select></td><td id="formTableAdd_'+addCount+'_4"><input type="text" name="old_'+addCount+'_4"></td><td id="formTableAdd_'+addCount+'_5"><input type="text" name="old_'+addCount+'_5"></td><td id="formTableAdd_'+addCount+'_6"><input type="text" name="old_'+addCount+'_6"></td><td id="formTableAdd_'+addCount+'_7"><textarea type="text" name="old_'+addCount+'_7"></textarea></td><td id="formTableAdd_'+addCount+'_8"><textarea type="text" name="old_'+addCount+'_8"></textarea></td></tr>');
+		    $('#formTable_1').before('<tr id="formTableAdd_'+addCount+'" class="formTableAdd"><td id="<td id="formTableAdd_'+addCount+'_0"><p class="button buttonRedRing del">X</p></td><td id="formTableAdd_'+addCount+'_1"><input type="text" name="old_'+addCount+'_1" required></td><td id="formTableAdd_'+addCount+'_2"><select type="text" name="old_'+addCount+'_2"><option>Text</option><option>Image</option><option>Text + Location</option><option>Text + Image</option></select></td><td id="formTableAdd_'+addCount+'_3"><select type="text" name="old_'+addCount+'_3" required><option>Clickable</option><option>Not Clickable</option></select></td><td id="formTableAdd_'+addCount+'_4"><input type="text" name="old_'+addCount+'_4"></td><td id="formTableAdd_'+addCount+'_5"><input type="text" name="old_'+addCount+'_5"></td><td id="formTableAdd_'+addCount+'_6"><input type="text" name="old_'+addCount+'_6"></td><td id="formTableAdd_'+addCount+'_7"><textarea type="text" name="old_'+addCount+'_7"></textarea></td><td id="formTableAdd_'+addCount+'_8"><textarea type="text" name="old_'+addCount+'_8"></textarea></td></tr>');
 		    addCount++;
 		    $('input[name="old_'+(i-1).toString()+'_1').val(content_num[0]);
 		    $('select[name="old_'+(i-1).toString()+'_2').val(content_num[1]);
@@ -85,20 +92,25 @@ $(document).ready(function(){
 		}
 		else if($(this).val() == 'New Client'){
 			$('#fill').show();
-			$('input[text]').val('');
+			$('input[type="text"]').val('');
 			$('textarea').val('');
 			$('.projectSelect').hide();
+			$('.formTableAdd').remove();
 		}
 		else{
 			$('#fill').hide();
 			$('.projectSelect').show();
+			$('#projectSelect > option').remove();
+			$('#projectSelect').append('<option><\option><option>New Project</option>');
 			for(var i = 0; i < clients[$('#clientSelect').val()].length; i++){
 				company = $('#clientSelect').val();
 				project = clients[company][i];
 				$('#projectSelect').append('<option>'+project+'<\option>');
-				if($('#projectSelect').children().last().val() == ''){
-		            $('#projectSelect').children().last().remove();
-		        }
+				for(var j = 1; j < $('#projectSelect').children().length; j++){
+			        if($('#projectSelect').children().eq(j).val() == ''){
+	                    $('#projectSelect').children().eq(j).remove();
+	                }
+			    }
 			}
 		}
 	});
@@ -111,16 +123,19 @@ $(document).ready(function(){
 			$('#fill').show();
 			$('input[type=text]').val('');
 			$('textarea').val('');
+			$('.formTableAdd').remove();
 		}
 		else{
 		    $('#fill').show();
+		    company = $('#clientSelect').val();
+		    project = $('#projectSelect').val();
 		    projectf(company, project);
 		}
 	});
 
 
 	$('#addButton').click(function(){
-		$('#formTable_1').before('<tr id="formTableAdd_'+addCount+'"><td id="<td id="formTableAdd_'+addCount+'_0"><p class="button buttonRedRing del">X</p></td><td id="formTableAdd_'+addCount+'_1"><input type="text" name="in_'+addCount+'_1" required></td><td id="formTableAdd_'+addCount+'_2"><select type="text" name="in_'+addCount+'_2"><option>Text</option><option>Image</option><option>Text + Location</option><option>Text + Image</option></select></td><td id="formTableAdd_'+addCount+'_3"><select type="text" name="in_'+addCount+'_3" required><option>Clickable</option><option>Not Clickable</option></select></td><td id="formTableAdd_'+addCount+'_4"><input type="text" name="in_'+addCount+'_4"></td><td id="formTableAdd_'+addCount+'_5"><input type="text" name="in_'+addCount+'_5"></td><td id="formTableAdd_'+addCount+'_6"><input type="text" name="in_'+addCount+'_6"></td><td id="formTableAdd_'+addCount+'_7"><textarea type="text" name="in_'+addCount+'_7"></textarea></td><td id="formTableAdd_'+addCount+'_8"><textarea type="text" name="in_'+addCount+'_8"></textarea></td></tr>');
+		$('#formTable_1').before('<tr id="formTableAdd_'+addCount+'" class="formTableAdd"><td id="<td id="formTableAdd_'+addCount+'_0"><p class="button buttonRedRing del">X</p></td><td id="formTableAdd_'+addCount+'_1"><input type="text" name="in_'+addCount+'_1" required></td><td id="formTableAdd_'+addCount+'_2"><select type="text" name="in_'+addCount+'_2"><option>Text</option><option>Image</option><option>Text + Location</option><option>Text + Image</option></select></td><td id="formTableAdd_'+addCount+'_3"><select type="text" name="in_'+addCount+'_3" required><option>Clickable</option><option>Not Clickable</option></select></td><td id="formTableAdd_'+addCount+'_4"><input type="text" name="in_'+addCount+'_4"></td><td id="formTableAdd_'+addCount+'_5"><input type="text" name="in_'+addCount+'_5"></td><td id="formTableAdd_'+addCount+'_6"><input type="text" name="in_'+addCount+'_6"></td><td id="formTableAdd_'+addCount+'_7"><textarea type="text" name="in_'+addCount+'_7"></textarea></td><td id="formTableAdd_'+addCount+'_8"><textarea type="text" name="in_'+addCount+'_8"></textarea></td></tr>');
 		addCount++;
 	});
 	
