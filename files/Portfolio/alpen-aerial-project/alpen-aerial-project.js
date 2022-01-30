@@ -11,13 +11,13 @@ $(document).ready(function(){
 	    if(companies[i] != '.' && companies[i] != '..'){
 	        client = companies[i].replace('.txt','').replace('_',' ').split('-')[0];
 	        project = companies[i].replace('.txt','').replaceAll('_',' ').split('-')[1];
-	        for(var j = 1; j < $('#clientSelect').children().length; j++){
+			if(clients[client] == null){
+		        $('#clientSelect').append('<option>'+client+'<\option>');
+			}
+			for(var j = 1; j < $('#clientSelect').children().length; j++){
 			    if($('#clientSelect').children().eq(j).val() == ''){
 	                $('#clientSelect').children().eq(j).remove();
 	            }
-			}
-			if(clients[client] == null){
-		        $('#clientSelect').append('<option>'+client+'<\option>');
 			}
 		    clients[client] == null ? clients[client] = [project] : clients[client].push(project);
 	    }
@@ -34,7 +34,7 @@ $(document).ready(function(){
         $('#fill').show();
 	    $('.projectSelect').show();
         <?php $content = file_get_contents($txt_url); ?>
-    	<?php echo "var formContent = '". $content . "';\n"; ?>
+    	<?php echo 'var formContent = '. json_encode(str_replace('"','',$content)) . ';'."\n"; ?>
     	$('#clientSelect').val(company_name);
     	$('#projectSelect > option').remove();
 		$('#projectSelect').append('<option><\option><option>New Project</option>');
