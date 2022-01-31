@@ -212,6 +212,10 @@
 	padding: 0.75vh;
 }
 
+#projLink{
+	margin-left: 35vh;
+}
+
 #resumeLink{
 	float: right;
 }

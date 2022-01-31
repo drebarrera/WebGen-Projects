@@ -52,6 +52,8 @@ slide1ResumeA = mx.Link()
 slide1ResumeT = mx.T()
 slide1ContactA = mx.Link()
 slide1ContactT = mx.T()
+slide1ProjA = mx.Link()
+slide1ProjT = mx.T()
 slide1Image = mx.Image()
 slide2 = mx.C()
 slide2Textbox1 = mx.C()
@@ -147,13 +149,15 @@ mainInstructions.content = 'Welcome! Choose a track and then press <span style="
 
 # Slide 1
 slide1.content = [trackMergeAll, slide1Textbox]
-slide1Textbox.content = [slide1Title, slide1Image, slide1Text, slide1ContactA, slide1ResumeA]
+slide1Textbox.content = [slide1Title, slide1Image, slide1Text, slide1ContactA, slide1ResumeA, slide1ProjA]
 slide1Title.content = 'hello world.'
 slide1Text.content = 'My name is Andr&eacute;s Barrera, but you can call me Dre. I am a <class="pseudoLink bookmark" data-slide="2" data-track = "2">Computer Engineering</span> senior at <a href="https://www.purdue.edu" target="_blank" class="textLink">Purdue University</a>. With a background in <span class="pseudoLink bookmark" data-slide="6" data-track = "2">Multidisciplinary Engineering</span>, <span class="pseudoLink bookmark" data-slide="3" data-track = "3">UI/UX</span>, and <span class="pseudoLink bookmark" data-slide="5" data-track = "2">Business Development</span>, I am much more than just a Computer Engineer.<br><br><em style="font-weight: 500;text-align: center; width:100%; display: block;">I am an ambitious creator.</em>'
 slide1ResumeA.content = [slide1ResumeT]
 slide1ResumeT.content = 'My Resume'
 slide1ContactA.content = [slide1ContactT]
 slide1ContactT.content = 'Contact Me'
+slide1ProjA.content = [slide1ProjT]
+slide1ProjT.content = 'My Latest Projects'
 
 # Slide 2
 slide2.content = [redTrack, blueTrack, yellowTrack, slide2Textbox1, slide2Textbox2, slide2Textbox3]
@@ -362,6 +366,10 @@ slide1ContactA.id = 'contactLink'
 slide1ContactA.cl = 'slideButton2'
 slide1ContactA.target = '_blank'
 slide1ContactA.src = 'https://www.drebarrera.com/contact/'
+slide1ProjA.id = 'projLink'
+slide1ProjA.cl = 'slideButton3'
+slide1ProjA.target = '_blank'
+slide1ProjA.src = 'https://www.drebarrera.com/projects/'
 
 # Slide 2
 slide2.background_color = '#fefefe'
