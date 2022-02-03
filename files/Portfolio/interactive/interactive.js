@@ -415,6 +415,11 @@ $(document).ready(function(){
 							top: winHeight * scrollCoeff + winHeight * 0.25
 						},1000);
 					}
+					if(newCoeff == 0){
+    						$("#center").animate({
+    							backgroundColor: "#efefef"
+    						},1000);
+    					}
 				});
 				setTimeout(function(){													scrollReady = 1;
 					if(newCoeff != 0){
