@@ -34,7 +34,7 @@
 	background-image: url("images/main_bottom.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: auto 100vh;
+	background-size: auto 100%;
 	background-color: #efefef;
 	position: absolute;
 }
@@ -124,7 +124,7 @@
 	background-image: url("images/main_top.png");
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: auto 100vh;
+	background-size: auto 100%;
 	position: absolute;
 	pointer-events: none;
 }

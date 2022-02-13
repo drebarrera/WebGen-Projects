@@ -249,6 +249,7 @@ body.overflow_x = 'hidden'
 # Center
 center.display = 'flex'
 center.justify_content = 'center'
+center.align_items = 'center'
 center.background_color = 'white'
 center.background_color = ''
 center.id = 'center'

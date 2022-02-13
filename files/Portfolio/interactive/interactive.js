@@ -11,8 +11,35 @@ $(document).ready(function(){
 	$('#main').css('overflow-y', 'hidden'); // Hide Overflow
 	const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 	$('#slideScrollMsg').hide();
-	$('#contactFloat').fadeOut(500);
-
+	$('#contactFloat').hide();
+    
+	h_start = $('#main').height();
+	w_start = $('#main').width();
+	h_layer_start = $('#mainLayer0,#mainLayerZ').height();
+	w_layer_start = $('#mainLayer0,#mainLayerZ').width();
+	$('#main').height(h_start * 0.5);
+	$('#main').width(w_start * 0.5);
+	$('#mainLayer0,#mainLayerZ').height(h_layer_start * 0.5);
+	$('#mainLayer0,#mainLayerZ').width(w_layer_start * 0.5);
+	$('#main,#mainLayer0,#mainLayerZ').css('opacity',0);
+	$('.trackMain').css('opacity',0);
+	$('.trackMain').css('top','39vh');
+	setTimeout(function(){
+	$('#main').not('.trackMain').animate({
+		height: h_start + 'px',
+		width: w_start + 'px',
+		opacity: 1
+	}, 1000);
+	$('#mainLayer0,#mainLayerZ').not('.trackMain').animate({
+		height: h_layer_start + 'px',
+		width: w_layer_start + 'px',
+		opacity: 1
+	}, 1000);
+	$('.trackMain').delay(800).animate({
+		opacity: 1,
+		top: 0+'vh'
+	}, 600);
+	},250);
 	/// Cloud Recursion ///
 	function clouds(){
 		if(go == 1){
