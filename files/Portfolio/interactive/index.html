@@ -293,7 +293,9 @@
 					opacity: 0
 				}, 800);
 				setTimeout(function(){
+				$('.textboxSlide').hide();//////
 				jQuery("#main").animate({ scrollTop: scrollCoeff * winHeight + "px" }, animationSpeed, function(){
+				    $('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).show();/////
 					$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).delay(200).animate({
 						top: "0vh",
 						opacity: 1
@@ -400,10 +402,11 @@
 					$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).delay(200).animate({
 						top: "0vh",
 						opacity: 1
-					}, 800);	
+					}, 800);
 					if(track == 1){
 						$('#trainRedMain').animate({
-							top: winHeight * scrollCoeff + winHeight * 0.25								},1000);
+							top: winHeight * scrollCoeff + winHeight * 0.25
+						},1000);
 					}
 					if(track == 2){
 						$('#trainBlueMain').animate({
@@ -415,8 +418,14 @@
 							top: winHeight * scrollCoeff + winHeight * 0.25
 						},1000);
 					}
+					if(newCoeff == 0){
+    					$("#center").animate({
+    						backgroundColor: "#efefef"
+    					},1000);
+    				}
 				});
-				setTimeout(function(){													scrollReady = 1;
+				setTimeout(function(){													
+					scrollReady = 1;
 					if(newCoeff != 0){
 						$('#slideScrollMsg').fadeIn(500);
 						if(newCoeff != 1){

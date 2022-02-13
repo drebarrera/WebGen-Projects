@@ -223,30 +223,34 @@ $(document).ready(function(){
 	/// TrackSlide Hover /// 
 	
 	$('.trackSlide').hover(function(){
-		if(slideHoverEN){
-			var trackID = $(this).attr('id');
-			var hoverIndex = {'redTrack': 0, 'blueTrack':1, 'yellowTrack':2,'trackMergeAll': 3,'trackMergeBY':1};	
-			var trackColor = {0: 'Red', 1: 'Blue', 2: 'Yellow'};
-			$('#slide'+scrollCoeff+'Textbox'+trackColor[track - 1]).hide();
-			
-			$('#slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).show();
-			document.getElementById('slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).style.opacity = "1";
-		}
+	    if(scrollReady){
+    		if(slideHoverEN){
+    			var trackID = $(this).attr('id');
+    			var hoverIndex = {'redTrack': 0, 'blueTrack':1, 'yellowTrack':2,'trackMergeAll': 3,'trackMergeBY':1};	
+    			var trackColor = {0: 'Red', 1: 'Blue', 2: 'Yellow'};
+    			$('#slide'+scrollCoeff+'Textbox'+trackColor[track - 1]).hide();
+    			
+    			$('#slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).show();
+    			document.getElementById('slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).style.opacity = "1";
+    		}
+	    }
 	});
 
 	
 	/// TrackSlide Exit /// 
 	$('.trackSlide').mouseout(function(){
-		if(slideHoverEN){
-			var trackID = $(this).attr('id');
-			var hoverIndex = {'redTrack': 0, 'blueTrack':1, 'yellowTrack':2,'trackMergeAll': 3, 'trackMergeBY':1};	
-			var trackColor = {0: 'Red', 1: 'Blue', 2: 'Yellow'};
-			$('#slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).hide();
-			document.getElementById('slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).style.opacity = "0";
-			
-			document.getElementById('slide'+scrollCoeff+'Textbox'+trackColor[track - 1]).style.opacity = "1";
-			$('#slide'+scrollCoeff+'Textbox'+trackColor[track - 1]).show();
-		}
+	    if(scrollReady){
+    		if(slideHoverEN){
+    			var trackID = $(this).attr('id');
+    			var hoverIndex = {'redTrack': 0, 'blueTrack':1, 'yellowTrack':2,'trackMergeAll': 3, 'trackMergeBY':1};	
+    			var trackColor = {0: 'Red', 1: 'Blue', 2: 'Yellow'};
+    			$('#slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).hide();
+    			document.getElementById('slide'+scrollCoeff+'Textbox'+trackColor[hoverIndex[trackID]]).style.opacity = "0";
+    			
+    			document.getElementById('slide'+scrollCoeff+'Textbox'+trackColor[track - 1]).style.opacity = "1";
+    			$('#slide'+scrollCoeff+'Textbox'+trackColor[track - 1]).show();
+    		}
+	    }
 	});
 	
 
@@ -293,7 +297,9 @@ $(document).ready(function(){
 					opacity: 0
 				}, 800);
 				setTimeout(function(){
+				$('.textboxSlide').hide(); //
 				jQuery("#main").animate({ scrollTop: scrollCoeff * winHeight + "px" }, animationSpeed, function(){
+				    $('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).show(); //
 					$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).delay(200).animate({
 						top: "0vh",
 						opacity: 1
@@ -337,8 +343,11 @@ $(document).ready(function(){
 						top: "5vh",
 						opacity: 0
 					}, 800);	
+					setTimeout(function(){
+				    		$('.textboxSlide').hide(); //
+					}, 800);
 					jQuery("#main").delay(800).animate({ scrollTop: winHeight * scrollCoeff + "px" }, animationSpeed, function(){
-						$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).show();
+						$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).show(); // 
 						$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).animate({
 							top: "0vh",
 							opacity: 1
@@ -394,13 +403,16 @@ $(document).ready(function(){
 					top: "5vh",
 					opacity: 0
 				}, 800);
+				setTimeout(function(){
+				    $('.textboxSlide').hide(); //
+				}, 800);
 				jQuery("#main").delay(800).animate({ scrollTop: winHeight * newCoeff + "px" }, animationSpeed, function(){
 					scrollCoeff = newCoeff;
-					$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).show();
+					$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).show(); //
 					$('#slide'+scrollCoeff+'Textbox'+trackColor(scrollCoeff)).delay(200).animate({
 						top: "0vh",
 						opacity: 1
-					}, 800);	
+					}, 800);
 					if(track == 1){
 						$('#trainRedMain').animate({
 							top: winHeight * scrollCoeff + winHeight * 0.25								},1000);
@@ -416,10 +428,10 @@ $(document).ready(function(){
 						},1000);
 					}
 					if(newCoeff == 0){
-    						$("#center").animate({
-    							backgroundColor: "#efefef"
-    						},1000);
-    					}
+    					$("#center").animate({
+    						backgroundColor: "#efefef"
+    					},1000);
+    				}
 				});
 				setTimeout(function(){													scrollReady = 1;
 					if(newCoeff != 0){
