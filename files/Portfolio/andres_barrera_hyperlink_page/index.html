@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><title>Default Page</title><meta charset="utf-8"><meta name="description" content="Default WebGen Page"><meta name="keywords" content=""><meta name="author" content="Andres Barrera"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="..\JQuery.js"></script><script>const title = 'dre barrera';
+
+function titleSet(text, time){
+	setTimeout(function(){	
+		$('#title').html(text + '_');
+	}, time);
+}
+
+function titleType(){
+	for(x = 0; x < title.length; x++){
+		titleSet(title.slice(0,x+1), x * 100);
+	}
+	setTimeout(function(){	
+		titleRecurse();
+	}, (title.length * 100) + 500);
+}
+
+
+function titleRecurse(){
+	titleReturn = Math.floor(Math.random() * (title.length - 1) + 1);
+	for(x = title.length; x > title.length - titleReturn; x--){
+		titleSet(title.slice(0,x+1), (title.length - x) * 100);
+	}
+	setTimeout(function(){	
+		for(x = x; x < title.length; x++){
+			titleSet(title.slice(0,x+1), x * 100);
+		}
+	}, (titleReturn * 100) + 100);
+	
+	setTimeout(function(){	
+		titleRecurse();
+	}, (2 * (titleReturn * 100) + 2000))
+}
+
+
+$(document).ready(function(){
+	setTimeout(function(){
+		$('#background').animate({
+			opacity: 0.6
+		}, 500);
+	},500);
+
+	for(x = 0; x < 6; x++){
+		setTimeout(function(y){
+			if(y == 0){
+				$('#title').animate({
+					left: '0vw'
+				}, 250, function(){
+					setTimeout(function(){
+						titleType();
+					}, 500);
+				});
+			}
+			else {
+				$('#link'+(y-1)).animate({
+					left: '0vw'
+				}, 250);
+			}
+		}, 1000 + x * 300, x);
+	}
+});</script><style>p, h1{ 	margin-block-start: 0em; 	margin-block-end: 0em; 	margin-inline-start:0em; 	margin-inline-end: 0em; }  body{ 	background-color: black; }  #background{ 	height: 100vh; 	width: 100vw; 	background-image: url("images/background.jpg"); 	background-size: cover; 	background-position: center; 	z-index: 0; 	display: inline; 	position: absolute; }  #center{ 	height: 100vh; 	width: 100vw; 	display: flex; 	justify-content: center; 	align-items: center; 	flex-wrap: wrap; 	z-index: 1; 	position: absolute; 	text-align: center; }  #title{ 	width: 80%; 	display: block; 	color: white; 	font-weight: 500; 	font-size: 6vh; 	position: relative; 	left: -100vw; }  #center > a { 	width: 80%; 	height: auto; 	display: block; 	color: white; 	font-size: 4.5vh; 	position: relative; 	padding: 2vh; 	left: -100vw; }  #center > a:hover{ 	background-color: rgba(0,0,0,0.5); }  #note{ 	width: 95%; 	max-width: 600px; 	color: white; 	font-size: 3vh; }  #note > a{ 	color: white; 	text-decoration: none; }  #note > a:hover{ 	opacity: 0.5; }</style></head>
+<body style="margin:0;background-color:black;overflow-x:hidden;font-family:Helvetica;color:black;"><div id="background" style="overflow-x:visible;overflow-y:visible;"></div><div id="center" style="overflow-x:visible;overflow-y:visible;"><h1 id="title" style="">dre barrera_</h1><a id="link0" href="https://www.drebarrera.com/" target="_blank" style=""><p style="">Portfolio</p></a><a id="link1" href="https://www.github.com/drebarrera/" target="_blank" style=""><p style="">GitHub</p></a><a id="link2" href="https://www.linkedin.com/in/drebarrera" target="_blank" style=""><p style="">LinkedIn</p></a><a id="link3" href="https://www.behance.net/drebarrera/" target="_blank" style=""><p style="">Behance</p></a><a id="link4" href="https://www.drebarrera.com/resources/curriculum.pdf" target="_blank" style=""><p style="">Curriculum</p></a><a id="link5" href="https://www.drebarrera.com/resources/resume.pdf" target="_blank" style=""><p style="">Resume</p></a><p id="note" style="">Made with Dre Barrera&#39;s <a href="https://github.com/drebarrera/WebGen" target="_blank">WebGen</a></p></div></body></html>
