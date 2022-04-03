@@ -61,4 +61,20 @@ p, h1, h4 {
 #tutorial_title{
 	font-size: 3vh;
 	padding: 1vh;
+	width: 100%;
+}
+
+#doc_content_frame{
+	width: 100%;
+	height: auto;
+	padding: 25px;
+}
+
+.code_block{
+	white-space: pre-wrap;
+	background-color: rgba(60,60,60,1);
+	color: #23d5ab;
+	padding: 10px;
+	overflow-x: auto;
+	font-family: Courier New;	
 }

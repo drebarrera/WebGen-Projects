@@ -81,7 +81,7 @@ code.color = "#23d5ab"
 	let page_height = $('body').height();
 	let window_height = window.innerHeight;
 	$(window).scroll(function(){
-		if($(document).scrollTop() + 0.75 * window_height < parseInt($('#doc').css('margin-top'))){
+		if($(document).scrollTop() + 0.75 * window_height > parseInt($('#doc').css('margin-top'))){
 			$("#doc").animate({
 				marginLeft: "0vw"
 			}, 1500);
