@@ -18,6 +18,7 @@ $(document).ready(function(){
 			marginLeft: "0vw"
 		}, 2000, function(){
 			setTimeout(function(){
+				$('#scroll_info').fadeIn(500);
 				code_text = `\nimport modules as mx
 import sys
 import os
@@ -83,7 +84,7 @@ code.color = "#23d5ab"
 		if($(document).scrollTop() + 0.75 * window_height < parseInt($('#doc').css('margin-top'))){
 			$("#doc").animate({
 				marginLeft: "0vw"
-			}, 2000);
+			}, 1500);
 		}
 	});
 });

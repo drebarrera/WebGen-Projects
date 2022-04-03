@@ -8,6 +8,12 @@ p, h1, h4 {
 	margin-top: 27.5vh;
 }
 
+#scroll_info{
+	font-size: 3vh;
+	margin-top: 85vh;
+	display: none;
+}
+
 #code_slide{
 	width: 100vw;
 	height: auto;
@@ -35,7 +41,7 @@ p, h1, h4 {
 
 #doc{
 	width: 60vw;
-	height: 600px;
+	height: auto;
 	margin-top: 725px;
 	padding: 20px;
 	border-radius: 10px;
@@ -44,4 +50,15 @@ p, h1, h4 {
 
 #doc_title{
 	font-size: 4vh;
+	display: inline;
+}
+
+#doc_description{
+	font-size: 2vh;
+	padding: 2vh;
+}
+
+#tutorial_title{
+	font-size: 3vh;
+	padding: 1vh;
 }
