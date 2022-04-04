@@ -7,6 +7,9 @@ data = mx.Data()
 body = mx.Body()
 from head_projects import *
 data.title = "WebGen | Software for Efficient and Clean UI Design"
+from footer_projects import *
+import importlib
+importlib.reload(sys.modules['footer_projects'])
 
 ### OBJECTS ###
 header = Header('WebGen','https://www.drebarrera.com/webgen/',['Download','Code','Creator'],['https://www.github.com/drebarrera/webgen/','https://www.drebarrera.com/webgen/','https://www.drebarrera.com/'],[None, None, None])
@@ -27,9 +30,10 @@ tutorial_title = mx.T()
 tutorial = mx.X()
 doc_content_frame = mx.C()
 doc_content = mx.X()
+footer = Footer('WebGen 2022')
 
 ### CONTENT ###
-body.content = [center]
+body.content = [center, footer]
 center.content = [header, webgen_title, scroll_info, code_slide]
 webgen_title.content = "WEBGEN"
 scroll_info.content = "Scroll for More Content"
@@ -404,8 +408,11 @@ Modular commands refer the Python commands used to define objects and their prop
 </ul></div>"""
 
 ### PROPERTIES ###
+body.overflow_x = "hidden"
+center.id = "center"
 center.display = "flex"
 center.justify_content = "center"
+center.position = "relative"
 webgen_title.id = "webgen_title"
 webgen_title.color = "rgba(230,230,230,1)"
 webgen_title.position = "fixed"
@@ -417,6 +424,7 @@ code_slide.id = "code_slide"
 code_slide.position = "relative"
 code_slide.display = "flex"
 code_slide.justify_content = "center"
+code_slide.flex_wrap = "wrap"
 code_box.id = "code_box"
 code_box.background_color = "rgba(60,60,60,1)"
 code_box.overflow_y = "auto"
@@ -437,8 +445,9 @@ documentation.display = "flex"
 documentation.flex_wrap = "wrap"
 documentation.justify_content = "center"
 documentation.align_content = "flex-start"
-documentation.position = "absolute"
+documentation.position = "relative"
 documentation.z_index = "5"
+documentation.overflow_x = "hidden"
 doc_title.id = "doc_title"
 doc_title.color = "rgba(60,60,60,1)"
 doc_title.font_weight = "300"

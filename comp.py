@@ -8,7 +8,6 @@ def main(folder, filename):
     x = __import__(filename)
     importlib.reload(x)
     php = False
-
     jquery = False
     head = "<head>"+x.data.c()
     phpcode = ""
@@ -46,9 +45,7 @@ def main(folder, filename):
                 phpcode += "<?php " + f.read() + " ?>"
                 f.close()
                 php = True
-        
     head += "</head>"
-    
     body = x.body.c(x.mx.inadmissible, x.mx.dynamic)
     if php == False:
         fhtml = open(path+"index.html", 'w+')

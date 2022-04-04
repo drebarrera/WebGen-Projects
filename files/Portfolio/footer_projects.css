@@ -1,0 +1,28 @@
+#footer{
+	margin-top: 25px;
+	width: 100%;
+	padding: 10px;
+}
+
+#footer_title{
+	font-size: 3vh;
+}
+
+#footer_center{
+	width: 95%;
+}
+
+#footer_center > div > a{
+	color: #23d5ab;
+	text-decoration: none;
+}
+
+#footer_center > div > a:visited{
+	color: #23d5ab;
+}
+
+#footer_center > div > a:hover{
+	color: white;
+	text-decoration: underline;
+}
+

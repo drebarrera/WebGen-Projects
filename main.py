@@ -6,6 +6,7 @@ import re
 import comp
 import sys
 import shutil
+import importlib
 
 def main():
     for i in "--------------- W E B G E N ---------------":
@@ -117,6 +118,7 @@ def gf(folder, filename):
     return
 
 def exportf(folder, destination):
+    init_modules = {module: sys.modules[module] for module in sys.modules}
     home = destination
     os.makedirs(home+"/"+folder)
     for filename in os.listdir("files/"+folder+"/"):
@@ -145,6 +147,7 @@ def exportf(folder, destination):
                 destination = newhome+"/"+filename+"/images/" + file_name
                 shutil.copy(source, destination)
                 print('copied', file_name)
+        sys.modules = init_modules
     shutil.copy('JQuery.js', home+"/"+folder)
     shutil.copy('JQuery-UI.js', home+"/"+folder)
     prevdir = os.getcwd()
