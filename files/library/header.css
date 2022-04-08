@@ -1,0 +1,46 @@
+.nav{
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.navtable{
+	width: 80%;
+	height: auto;
+	background-color: red;
+}
+
+.navbrand{
+	height: auto;
+	width: auto;
+	display: flex;
+	align-items: center;
+}
+
+.navlogo{
+	height: 8vh;
+	width: auto;
+	background-color: lightblue;
+	display: inline;
+}
+
+.navtitle{
+	font-size: 2.5vh;
+	width: auto;
+	display: inline;
+	padding-left: 2vh;
+	margin-block-start:0em;
+	margin-block-end: 0em;
+}
+
+/*// Type 1 Header //*/
+/* Logo Cell */
+.navtype1table > tbody > tr > td:nth-child(1) {
+	width: auto;
+}
+
+/* Title Cell */
+.navtype1table > tbody > tr > td:nth-child(2) {
+	padding-left: 2vh;
+}

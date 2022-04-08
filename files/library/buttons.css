@@ -1,0 +1,54 @@
+.button{
+	position: relative;
+	display: inline-block;
+	padding: var(--button-padding);
+	cursor: pointer;
+	color: var(--accent-color);
+	text-decoration: none;
+	font-size: 1.75vh;
+	margin: 1vh;
+	margin-left: 1.5vh;
+	margin-right: 1.5vh;
+	filter: var(--shadow);
+	background-color: var(--primary-color);
+	border: 2px solid var(--primary-color);
+	width: var(--button-width);
+	border-radius: var(--button-radius);
+	text-align: center;
+}
+
+.button > p{
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.button-inverse, .button:hover{
+	background-color: var(--accent-color);
+	color: var(--primary-color);
+}
+
+.button-inverse:hover{
+	background-color: var(--primary-color);
+	color: var(--accent-color);
+}
+
+.button-underline{
+	border: 0px solid var(--primary-color);
+	border-bottom: 5px solid var(--accent-color);
+}
+
+.button-underline:hover{
+	background-color: var(--primary-color);
+	color: var(--accent-color);
+	border-bottom: 5px solid var(--primary-color);
+}
+
+.button-underline.button-inverse {
+	background-color: var(--primary-color);
+	color: var(--accent-color);
+	border-bottom: 5px solid var(--accent-color);
+}
+
+.button-underline.button-inverse:hover {
+	border-bottom: 5px solid var(--primary-color);
+}
