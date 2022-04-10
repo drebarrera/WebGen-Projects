@@ -1,27 +1,26 @@
 .nav{
-	width: 100%;
+	width: 100vw;
 	height: auto;
 	display: flex;
 	justify-content: center;
 }
 
 .navtable{
-	width: 80%;
+	width: 80vw;
 	height: auto;
-	background-color: red;
 }
 
 .navbrand{
 	height: auto;
 	width: auto;
+	padding: 5px;
 	display: flex;
 	align-items: center;
 }
 
 .navlogo{
-	height: 8vh;
+	height: var(--logo-height);
 	width: auto;
-	background-color: lightblue;
 	display: inline;
 }
 
@@ -29,18 +28,64 @@
 	font-size: 2.5vh;
 	width: auto;
 	display: inline;
-	padding-left: 2vh;
+	padding-left: 3vh;
+	padding-right: 3vh;
 	margin-block-start:0em;
 	margin-block-end: 0em;
+	font-weight: 500;
+	white-space: nowrap;
 }
 
-/*// Type 1 Header //*/
-/* Logo Cell */
-.navtype1table > tbody > tr > td:nth-child(1) {
+.navmenubar{
 	width: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 0 auto;
+	flex-wrap: wrap;
 }
 
-/* Title Cell */
-.navtype1table > tbody > tr > td:nth-child(2) {
-	padding-left: 2vh;
+#navtabletype1_0_0{
+	vertical-align: top;
 }
+
+#navtabletype1_0_1, #navtabletype1_0_2{
+	vertical-align: middle;
+}
+
+#navmenuicon{
+	display: none;
+	float: right;
+}
+
+@media only screen and (max-width:1000px) {
+	.navtable{
+		width: 95vw;
+	}
+	.navmenubar{
+		display: var(--nav-display-1000);
+	}
+	#navmenuicon{
+		display: var(--nav-display-1000);
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	.navmenubar{
+		display: var(--nav-display-750);
+	}
+	#navmenuicon{
+		display: var(--nav-display-750);
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.navmenubar{
+		display: var(--nav-display-500);
+	}
+	#navmenuicon{
+		display: var(--nav-display-500);
+	}
+}
+

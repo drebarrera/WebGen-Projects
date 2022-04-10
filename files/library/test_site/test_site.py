@@ -13,8 +13,10 @@ importlib.reload(sys.modules['header'])
 
 data.title = "Test Site"
 ### OBJECTS ###
-header = header1('logo.png', 'Test Site')
-button = button('link','Text','https://www.google.com',primary_color='#005580',accent_color='white',width='10vw',padding='0.5vh', underline=False, inverse=False)
+buttons = list()
+for x in range(4):
+    buttons.append(('link','Text'+str(x),'https://www.google.com/'))
+header = header1('logo.png', 'Test Site', buttons, primary_color='rgb(245,245,245)',button_style='rounded',button_width='5vw 50px', button_colors='red white', navbar='10px red')
 
 ### CONTENT ###
 body.content = [header]
