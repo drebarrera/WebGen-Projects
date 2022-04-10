@@ -59,9 +59,34 @@
 	float: right;
 }
 
+#headermenu{
+	float: right;
+	width: 100%;
+	max-width: 300px;
+	display: flex;
+	justify-content: center;
+	opacity: 0.75;
+	margin-right: 2vw;
+	padding-bottom: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	height: 0px;
+}
+
+#headermenutable{
+	opacity: 1;
+	width: 100%;
+}
+
+#headermenutable > header> div{
+	padding: 3px;
+	text-align: center;
+}
+
 @media only screen and (max-width:1000px) {
 	.navtable{
 		width: 95vw;
+		margin-right: 2.5vw;
 	}
 	.navmenubar{
 		display: var(--nav-display-1000);
@@ -89,3 +114,97 @@
 	}
 }
 
+@keyframes navmenutoggle1-1{
+	0% {
+    		transform: rotate(0deg) translate(0px,0px);
+  	}
+	100% {
+		transform: rotate(45deg) translate(7px,-4px);
+	}
+}
+
+@keyframes navmenutoggle2-1{
+	0% {
+    		transform: rotate(0deg) translate(0px,0px);
+  	}
+	100% {
+		transform: rotate(-45deg) translate(-17px,7px);
+	}
+}
+
+@keyframes navmenutoggle3-1{
+	0% {
+    		opacity: 1;
+		transform: translate(0px,0px);
+  	}
+	100% {
+		opacity: 0;
+		transform: translate(0px, -10px);	
+	}
+}
+@keyframes navmenutoggle1-2{
+	0% {
+		transform: rotate(45deg) translate(7px,-4px);
+  	}
+	100% {
+		transform: rotate(0deg) translate(0px,0px);	
+	}
+}
+
+@keyframes navmenutoggle2-2{
+	0% {
+		transform: rotate(-45deg) translate(-17px,7px);
+  	}
+	100% {
+		transform: rotate(0deg) translate(0px,0px);
+	}
+}
+
+@keyframes navmenutoggle3-2{
+	0% {
+    		opacity: 0;
+		transform: translate(0px, -10px);	
+  	}
+	100% {
+		opacity: 1;
+		transform: translate(0px,0px);
+	}
+}
+
+
+.navmenutoggle1-1{
+	animation: navmenutoggle1-1 0.5s linear 1;
+}
+
+.navmenutoggle2-1{
+	animation: navmenutoggle2-1 0.5s linear 1;
+}
+
+.navmenutoggle3-1{
+	animation: navmenutoggle3-1 0.5s linear 1;
+}
+
+.navmenutoggle1-2{
+	animation: navmenutoggle1-2 0.5s linear 1;
+}
+
+.navmenutoggle2-2{
+	animation: navmenutoggle2-2 0.5s linear 1;
+}
+
+.navmenutoggle3-2{
+	animation: navmenutoggle3-2 0.5s linear 1;
+}
+
+.navmenutoggle1-static{
+	transform: rotate(45deg) translate(7px,-4px);
+}
+
+.navmenutoggle2-static{
+	transform: rotate(-45deg) translate(-17px,7px);
+}
+
+.navmenutoggle3-static{
+	opacity:0;
+	transform: translate(0px, -10px);	
+}
