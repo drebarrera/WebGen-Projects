@@ -22,14 +22,13 @@ class menu:
         ### CONTENT ###
         buttons = list()
         for b in range(len(self.buttons)):
-            button_b = button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.button_primary,accent_color=self.button_accent,width='92%',padding='1vh',radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse)
-            button_b.id = 'navbutton'+str(b)
-            button_b.cl = 'navbutton'
+            button_b = button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.accent,accent_color=self.button_accent,width='92%',padding='1vh',radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse)
+            button_b.id = 'navmenubutton'+str(b)
+            button_b.cl = 'navmenubutton'
             buttons.append([button_b])
         headermenu.content = buttons
         headermenu.id = 'headermenu'
-        headermenu.overflow_y = 'hidden'
-        headermenu.background_color = self.button_primary
+        headermenu.background_color = self.accent
         headermenu.var__accent_color = self.primary
         headermenu.position = 'relative'
         headermenu.tableid = 'headermenutable'
@@ -37,8 +36,8 @@ class menu:
         
 
 ### Header 1
-class header1:
-    def __init__(self, logo_name, site_name, buttons=[], position='fixed', primary_color='white', accent_color='black', navbar='normal', logo_height='8vh', button_style='underline sharp', button_colors=None, button_width='auto', nav_switch='1000'):
+class header:
+    def __init__(self, logo_name, site_name, buttons=[], base_url='', position='fixed', primary_color='white', accent_color='black', navbar='normal', logo_height='75px', button_style='underline sharp', button_colors=None, button_width='auto', nav_switch='1000', underline=False):
         self.logo_url = 'images/' + logo_name
         self.site_name = site_name
         self.buttons = buttons
@@ -59,21 +58,23 @@ class header1:
         self.navbar_conditions = None if navbar == 'normal' else navbar
         self.nav_switch = [1000,750,500][min(range(len([1000,750,500])), key = lambda i: abs([1000,750,500][i]-int(nav_switch)))]
         self.position = position
+        self.underline = '2px' if underline else '0px'
+        self.base_url = base_url
+        self.header_container = mx.C()
 
-    def c(self, inadmissible, dynamic):
+    def generate_header(self):
         ### OBJECTS ###
-        header_container = mx.C()
         header = mx.Nav()
         logo = mx.Image()
         title = mx.T()
-        branding = mx.C()
+        branding = mx.Link()
         menubar = mx.C()
         menuicon = mx.Menu()
         x = mx.X()
         navmenu = menu(self.buttons, primary_color=self.primary, accent_color=self.accent, button_style=self.button_style, button_colors=self.button_colors)
 
         ### CONTENT ###
-        header_container.content = [header, navmenu]
+        self.header_container.content = [header, navmenu]
         header.content = [[branding, menubar, menuicon]]
         branding.content = [logo, title]
         logo.src = self.logo_url
@@ -87,12 +88,14 @@ class header1:
         menubar.content = buttons
 
         ### PROPERTIES ###
-        header_container.position = self.position
-        header.cl = 'nav navtype1'
-        header.tablecl = 'navtable navtype1table'
+        self.header_container.position = self.position
+        header.cl = 'nav'
+        header.tablecl = 'navtable'
         header.background_color = self.primary
-        header.var__accent_color = self.accent
+        self.header_container.var__accent_color = self.accent
+        self.header_container.var__border_width = self.underline
         header.position = 'relative'
+        branding.src = self.base_url
         branding.cl = 'navbrand'
         logo.cl = 'navlogo'
         logo.var__logo_height = self.logo_height
@@ -105,13 +108,19 @@ class header1:
         menubar.cl = 'navmenubar'
         if self.navbar_rounded: menubar.border_radius = self.navbar_conditions.split(' ')[0]
         if self.navbar_rounded: menubar.background_color = self.navbar_conditions.split(' ')[1]
-        for x in [y for y in [1000, 750, 500] if y <= self.nav_switch]:
-            exec('menubar.var__nav_display_' + str(x) + ' = "none"')
+        for x in [1000, 750, 500]:
+            if x <= self.nav_switch:
+                exec('self.header_container.var__nav_display_' + str(x) + ' = "none"')
+                exec('self.header_container.var__menu_display_' + str(x) + ' = "flex"')
+            else:
+                exec('self.header_container.var__nav_display_' + str(x) + ' = "flex"')
+                exec('self.header_container.var__menu_display_' + str(x) + ' = "none"')
         
         ### IDENTIFIERS ###
         header.id = 'nav'
         header.tableid = 'navtabletype1'
         logo.id = 'navlogo'
         title.id = 'navtitle'
-        
-        return header_container.c(inadmissible, dynamic)
+
+    def c(self, inadmissible, dynamic):
+        return self.header_container.c(inadmissible, dynamic)

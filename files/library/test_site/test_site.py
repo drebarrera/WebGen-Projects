@@ -16,8 +16,8 @@ data.title = "Test Site"
 buttons = list()
 for x in range(4):
     buttons.append(('link','Text'+str(x),'https://www.google.com/'))
-header = header1('logo.png', 'Test Site', buttons, primary_color='rgb(245,245,245)',button_style='rounded',button_width='5vw 50px', button_colors='red white', navbar='10px red')
-
+header = header('logo.png', 'Test Site', buttons, primary_color='rgb(245,245,245)', accent_color='rgb(230,230,230)', button_width='5vw 50px', nav_switch='750', underline=True, button_colors='rgb(245,245,245) black')
+header.generate_header()
 ### CONTENT ###
 body.content = [header]
 
