@@ -41,13 +41,14 @@
 
 .navmenubar{
 	width: auto;
-	display: flex;
+	display: var(--nav-display-5000);
 	flex-direction: row;
 	justify-content: center;
 	gap: 2vw;
 	align-items: center;
 	margin: 0 auto;
 	flex-wrap: wrap;
+	float: var(--navmenubar-float);
 }
 
 #navtabletype1_0_0, #navtabletype2_0_0{
@@ -59,7 +60,7 @@
 }
 
 #navmenuicon{
-	display: none;
+	display: var(--menu-display-5000);
 	float: right;
 }
 
@@ -67,10 +68,10 @@
 	float: right;
 	width: 100%;
 	max-width: 300px;
-	display: none;
+	display: var(--menu-display-5000);
 	justify-content: center;
 	opacity: 0.75;
-	margin-right: 2vw;
+	margin-right: 3vw;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 	overflow-y: hidden;
