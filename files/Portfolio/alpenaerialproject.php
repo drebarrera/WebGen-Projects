@@ -36,8 +36,10 @@ if($_POST["submit"]) {
 	$infoStr = $name.'xxixx'.$project.'xxixx'.$company.'xxixx'.$contact.'xxixx'.$clientEmail.'xxixx'.$clientPhone.'xxixx'.$description.'xxiixx';
 
 	$url = 'https://www.drebarrera.com/alpenaerial/'.str_replace(' ','_',$company).'-'.str_replace(' ','_',$project).'.txt';
-	file_put_contents('../alpenaerial/'.str_replace(' ','_',$company).'-'.str_replace(' ','_',$project).'.txt', $infoStr.$txtInfo);
-    $mailBody="Admin: $name\nProject: $project\nCompany: $company\nClient Contact: $contact\nContact Email: $clientEmail\nContact Phone: $clientPhone\n\nProject Description:\n$description\nURL: $url\n\n$visitInfo";
-	mail($recipient, $subject, $mailBody, "From: $name <dreebarrera@gmail.com>");
-	$thankYou="<p>Thank you! Your message has been sent.</p>";
+	if ($name == 'Client' || $name == 'Steve Kohl' || $name == 'Asher Noel' || $name == 'Andres Barrera'){
+	    file_put_contents('../alpenaerial/'.str_replace(' ','_',$company).'-'.str_replace(' ','_',$project).'.txt', $infoStr.$txtInfo);
+        $mailBody="Admin: $name\nProject: $project\nCompany: $company\nClient Contact: $contact\nContact Email: $clientEmail\nContact Phone: $clientPhone\n\nProject Description:\n$description\nURL: $url\n\n$visitInfo";
+	    mail($recipient, $subject, $mailBody, "From: $name <dreebarrera@gmail.com>");
+	    $thankYou="<p>Thank you! Your message has been sent.</p>";
+	}
 }

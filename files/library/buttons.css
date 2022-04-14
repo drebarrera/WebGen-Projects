@@ -50,3 +50,39 @@
 .button-underline.button-inverse:hover {
 	border-bottom: 5px solid var(--primary-color);
 }
+
+.button-gradient{
+	border: 3px solid transparent;
+	background-image: linear-gradient(var(--primary-color), var(--primary-color)), 
+                    linear-gradient(var(--button-gradient));
+	background-size: 400% 400%;
+  	background-origin: border-box;
+  	background-clip: padding-box, border-box;
+}
+
+.button-gradient-inverse{
+	border: 3px solid var(--primary-color);
+	background-image: linear-gradient(var(--button-gradient)), 
+                    linear-gradient(var(--primary-color), var(--primary-color));
+	background-size: 400% 400%;
+  	background-origin: border-box;
+  	background-clip: padding-box, border-box;
+	color: var(--accent-color);
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 150% 50%;
+	}
+}
+
+.button-gradient:hover, .button-gradient-inverse:hover{
+	animation: gradient 1s ease;
+	color: white;
+}

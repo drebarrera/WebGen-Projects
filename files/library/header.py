@@ -37,7 +37,7 @@ class menu:
 
 ### Header ###
 class header_obj:
-    def __init__(self, logo_name=None, site_name=None, buttons=[], base_url='', position='fixed', primary_color='white', accent_color='black', navbar='normal', logo_height='75px', button_style='underline sharp', button_colors=None, button_width='auto', nav_switch='1000', underline=False, menubar_float='center', brand_float='left'):
+    def __init__(self,logo_name=None,site_name=None,buttons=[],base_url='',position='fixed',primary_color='white',accent_color='black',navbar='normal',logo_height='75px',button_style='underline sharp',button_colors=None,button_width='auto',nav_switch='1000',underline=False,menubar_float='center',brand_float='left',button_gradient=None,header_gradient=None,menubar_gradient=None,header_id='header'):
         self.logo_url = 'images/' + logo_name if logo_name != None else ''
         self.site_name = site_name if site_name != None else ''
         self.buttons = buttons
@@ -54,9 +54,10 @@ class header_obj:
         self.button_primary = button_colors.split()[0] if button_colors else self.primary
         self.button_accent = button_colors.split()[1] if button_colors else self.accent
         self.button_width = button_width
+        self.button_gradient = button_gradient
         self.navbar_rounded = False if navbar == 'normal' else True
         self.navbar_conditions = None if navbar == 'normal' else navbar
-        self.nav_switch = [5000,1000,750,500][min(range(len([5000,1000,750,500])), key = lambda i: abs([5000,1000,750,500][i]-int(nav_switch)))]
+        self.nav_switch = [5000,1250,1000,750,500][min(range(len([5000,1250,1000,750,500])), key = lambda i: abs([5000,1250,1000,750,500][i]-int(nav_switch)))]
         self.position = position
         self.underline = '2px' if underline else '0px'
         self.base_url = base_url
@@ -67,6 +68,9 @@ class header_obj:
         self.branding = mx.Link()
         self.menubar = mx.C()
         self.menuicon = mx.Menu()
+        self.header_gradient = header_gradient
+        self.menubar_gradient = menubar_gradient
+        self.header_id = header_id
 
     def generate(self):
         ### OBJECTS ###
@@ -77,23 +81,32 @@ class header_obj:
 
         ### CONTENT ###
         self.header_container.content = [self.header, navmenu]
+        if self.logo_url != '':
+            brandcontainer.content.append(logo)
+        if self.site_name != '':
+            brandcontainer.content.append(title)
         self.branding.content = [brandcontainer]
-        brandcontainer.content = [logo, title]
+        
         logo.src = self.logo_url
         title.content = self.site_name
         buttons = list()
         for b in range(len(self.buttons)):
-            button_b = button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.button_primary,accent_color=self.button_accent,width=self.button_width,padding='5px',radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse)
+            button_b = button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.button_primary,accent_color=self.button_accent,width=self.button_width,padding='5px',radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse,gradient=self.button_gradient)
             button_b.id = 'navbutton'+str(b)
             button_b.cl = 'navbutton'
             buttons.append(button_b)
         self.menubar.content = buttons
 
         ### PROPERTIES ###
+        self.header_container.id = self.header_id
         self.header_container.position = self.position
         self.header_container.var__accent_color = self.accent
         self.header_container.var__border_width = self.underline
         self.header.cl = 'nav'
+        if self.header_gradient:
+            self.header.cl += ' header-gradient'
+            self.header_container.var__header_gradient = self.header_gradient
+            self.header_container.var__primary_color = self.primary
         self.header.tablecl = 'navtable'
         self.header.background_color = self.primary
         self.header.position = 'relative'
@@ -110,14 +123,22 @@ class header_obj:
         self.menuicon.custom = '<animate xlink:href="#my-circle" attributeName="cx" from="50" to="450" dur="1s" begin="click" fill="freeze" />'
         self.menuicon.id = 'navmenuicon'
         self.menubar.cl = 'navmenubar'
+        if self.menubar_gradient:
+            self.menubar.cl += ' menubar-gradient'
+            self.menubar.var__menubar_gradient = self.menubar_gradient
+            self.menubar.var__menubar_color = self.navbar_conditions.split(' ')[1] if self.navbar_rounded else self.primary
         self.menubar.var__navmenubar_float = self.menubar_float
         if self.navbar_rounded: self.menubar.border_radius = self.navbar_conditions.split(' ')[0]
         if self.navbar_rounded: self.menubar.background_color = self.navbar_conditions.split(' ')[1]
-        for x in [5000,1000, 750, 500]:
+        for x in [5000, 1250, 1000, 750, 500]:
             if x <= self.nav_switch:
+                exec('self.header_container.var__nav_width_' + str(x) + ' = "95vw"')
+                exec('self.header_container.var__nav_margin_' + str(x) + ' = "2.5vw"')
                 exec('self.header_container.var__nav_display_' + str(x) + ' = "none"')
                 exec('self.header_container.var__menu_display_' + str(x) + ' = "flex"')
             else:
+                exec('self.header_container.var__nav_width_' + str(x) + ' = "100vw"')
+                exec('self.header_container.var__nav_margin_' + str(x) + ' = "0vw"')
                 exec('self.header_container.var__nav_display_' + str(x) + ' = "flex"')
                 exec('self.header_container.var__menu_display_' + str(x) + ' = "none"')
         
@@ -146,9 +167,13 @@ class Header(header_obj):
         self.button_width='auto'
         self.nav_switch='1000'
         self.underline=False
+        self.button_gradient=None
+        self.header_gradient=None
+        self.menubar_gradient=None
+        self.id='header'
         if menubar == 'right': self.menubar_float='right'
         if menubar == 'left': self.menubar_float='left'
-        if menubar == 'center': self.menubar_float='left'
+        if menubar == 'center': self.menubar_float='center'
         if branding == 'left': self.brand_float='flex-start'
         if branding == 'right': self.brand_float='flex-end'
         if branding == 'center': self.brand_float='center'
@@ -157,13 +182,16 @@ class Header(header_obj):
         self.menubar = menubar
         
     def build(self):
-        self.Header = header_obj(logo_name=self.logo_name, site_name=self.site_name, buttons=self.buttons, base_url=self.base_url, position=self.position, primary_color=self.primary_color, accent_color=self.accent_color, navbar=self.navbar, logo_height=self.logo_height, button_style=self.button_style, button_colors=self.button_colors, button_width=self.button_width, nav_switch=self.nav_switch, underline=self.underline, menubar_float=self.menubar_float, brand_float=self.brand_float)
+        if self.branding != self.menubar and self.menubar_float == 'center': self.menubar_float = 'left'
+        self.Header = header_obj(logo_name=self.logo_name,site_name=self.site_name,buttons=self.buttons,base_url=self.base_url,position=self.position,primary_color=self.primary_color,accent_color=self.accent_color,navbar=self.navbar,logo_height=self.logo_height,button_style=self.button_style,button_colors=self.button_colors,button_width=self.button_width,nav_switch=self.nav_switch,underline=self.underline,menubar_float=self.menubar_float,brand_float=self.brand_float,button_gradient=self.button_gradient,header_gradient=self.header_gradient,menubar_gradient=self.menubar_gradient,header_id=self.id)
+        menuicon = self.Header.menuicon if self.buttons != [] else mx.X()
+        
         if self.branding == self.menubar:
-            header_layout = [[self.Header.branding, self.Header.menuicon],[self.Header.menubar]]
+            header_layout = [[self.Header.branding, menuicon],[self.Header.menubar]]
         elif self.branding == 'left' or self.branding == 'center':
-            header_layout = [[self.Header.branding, self.Header.menubar, self.Header.menuicon]]
+            header_layout = [[self.Header.branding, self.Header.menubar, menuicon]]
         elif self.branding == 'right':
-            header_layout = [[self.Header.menuicon, self.Header.menubar, self.Header.branding]]
+            header_layout = [[self.Header.menuicon, self.Header.menubar, menuicon]]
         self.Header.header.content = header_layout
         self.Header.generate()
 

@@ -1,8 +1,8 @@
 import modules as mx
 
-### CLASSIC BUTTON ###
+### BUTTON ###
 class button:
-    def __init__(self, button_type, text, link_url=None, click_f=None, primary_color='black', accent_color='white', width='auto', padding='1vh', radius='sharp', shadow=False, inverse=False, underline=False):
+    def __init__(self, button_type, text, link_url=None, click_f=None, primary_color='black', accent_color='white', width='auto', padding='1vh', radius='sharp', shadow=False, inverse=False, underline=False, gradient=None):
         self.button_type = button_type
         self.text = text
         self.link_url = link_url
@@ -22,6 +22,8 @@ class button:
         self.underline = underline
         self.id = ''
         self.cl = ''
+        self.gradient = True if gradient != None else False
+        self.button_gradient = gradient
 
     def c(self, inadmissible, dynamic):
         ### OBJECTS ###
@@ -52,5 +54,8 @@ class button:
         button.var__button_padding = self.padding
         button.var__button_radius = self.radius
         button.var__shadow = 'drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.25))' if self.shadow else 'none'
+        if self.gradient:
+            button.cl += ' button-gradient' if not self.inverse else ' button-gradient-inverse'
+            button.var__button_gradient = self.button_gradient
         
         return button.c(inadmissible, dynamic)
