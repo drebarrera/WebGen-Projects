@@ -19,7 +19,7 @@ function rotate_navlogo(navlogo_height) {
 		var text = scroll * navtitle_text.length / 90;
 		$("#navlogo").addClass('navlogodynamic');
 		$(".navlogodynamic").get(0).style.setProperty('--navlogorotate',rotate + 'deg');
-		$(".navlogodynamic").get(0).style.setProperty('--navlogoheight',(navlogo_height + scroll / 2) + 'px');
+		$(".navlogodynamic").get(0).style.setProperty('--navlogoheight',(navlogo_height + scroll / 4.5) + 'px');
 		$("#navlogo").removeClass('navlogostatic');
 		$(".navbrand").addClass('navbranddynamic');
 		$(".navbranddynamic").get(0).style.setProperty('--navbrandheight',navlogo_outerHeight + 'px');

@@ -1,0 +1,44 @@
+.contentslide {
+	height: var(--slide-height);
+	width: var(--slide-width);
+}
+
+.contentslide p, .contentslide h1, .contentslide h2, .contentslide h3{
+	margin-block-start: 0em;
+	margin-block-end: 0em;
+	font-weight: 500;
+}
+
+.contentslide > .navtable{
+	width: 100%;
+	height: 100%;
+}
+
+.ccslide{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	flex-flow: row wrap;
+}
+
+.ccslide > h2 {
+	font-size: 65px;
+}
+
+.ccslide > p {
+	font-size: 22px;
+	text-indent: 50px;
+}
+
+.ccslide > ul {
+	font-size: 20px;
+	margin-left: 100px;
+}
+
+#slide1sgrid_1_0 .ccslide{
+	flex-direction:column;
+	justify-content: flex-start;
+}
