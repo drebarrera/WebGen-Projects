@@ -11,12 +11,12 @@ p {
 }
 
 #slide1sgrid_1_0 .ccslide{
-	flex-direction:column;
+	flex-flow:column;
 	justify-content: flex-start;
 }
 
 #slide1sgrid_2_0 .ccslide{
-	align-content: flex-start;
+	/*align-content: flex-start;*/
 }
 
 #slide1button{

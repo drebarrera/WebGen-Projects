@@ -26,7 +26,7 @@ class slide_obj():
         
     def c(self, inadmissible, dynamic):
         ### OBJECTS ###
-        grid = mx.NavTable()
+        grid = mx.FlexTable()
         
         ### CONTENT ###
         self.slide.content = [grid]
