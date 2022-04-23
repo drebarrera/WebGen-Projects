@@ -1,7 +1,7 @@
 import modules as mx
 
 ### BUTTON ###
-class button:
+class Button:
     def __init__(self, button_type, text, link_url=None, click_f=None, primary_color='black', accent_color='white', width='auto', padding='1vh', radius='sharp', shadow=False, inverse=False, underline=False, gradient=None):
         self.button_type = button_type
         self.text = text
@@ -15,7 +15,7 @@ class button:
         if radius == 'sharp':
             radius = '0'
         elif radius == 'rounded':
-            radius = '1vh'
+            radius = '10px'
         self.radius = radius
         self.shadow = shadow
         self.inverse = inverse

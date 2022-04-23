@@ -6,6 +6,23 @@ p {
 	white-space: pre-wrap;
 }
 
+#page {
+	display:none;
+}
+
+#slide1sgrid_1_0 .ccslide{
+	flex-direction:column;
+	justify-content: flex-start;
+}
+
+#slide1sgrid_2_0 .ccslide{
+	align-content: flex-start;
+}
+
+#slide1button{
+	margin: 12px;
+}
+
 #slide1emoji{
 	margin: 25px;
 	animation: wave 7.5s infinite;
@@ -22,6 +39,18 @@ p {
 	border: 10px solid rgb(250,250,250);
 	margin-right: 50px;
 	filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.5));
+}
+
+#slide2sgrid_0_0 .ccslide{
+	flex-direction: column;
+}
+
+@media only screen and (max-width:750px) {
+	#slide1image{
+		width: 100px;
+		border: 7.5px solid rgb(250,250,250);
+		margin-right: 30px;
+	}
 }
 
 @keyframes wave{

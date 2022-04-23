@@ -1,4 +1,3 @@
-
 function rotate_navlogo(navlogo_height) {
 	var navtitle_text = 'designed\nby\ndre';
 	var scroll = $(window).scrollTop();
@@ -39,7 +38,14 @@ function rotate_navlogo(navlogo_height) {
 	$('#navtitle').text(navtitle_text.slice(0, (navtitle_text.length - text)));
 };
 
+function redirect(url){
+	$('#page').fadeOut(500, function(){
+		location.href = url;
+	});
+}
+
 $(document).ready(function(){
+	$('#page').fadeIn(500);
 	var navlogo_height = $("#navlogo").height();
 	var navlogo_outerHeight_initial = $("#navlogo").outerHeight();
 	$(window).scroll(function(){

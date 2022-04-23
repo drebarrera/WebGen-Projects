@@ -4,9 +4,11 @@ class Page():
     def __init__(self):
         self.page = mx.C()
         self.content = []
+        self.id = 'page'
 
     def c(self, inadmissible, dynamic):
         self.page.content = self.content
+        self.page.id = self.id
         return self.page.c(inadmissible, dynamic)
 
 class slide_obj():
@@ -46,7 +48,7 @@ class slide_obj():
         self.slide.position = self.position
         self.slide.background_color = self.background_color
         self.slide.background_image = self.background
-
+        
         return self.slide.c(inadmissible, dynamic)
 
 class Slide():

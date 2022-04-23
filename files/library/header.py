@@ -22,7 +22,7 @@ class menu:
         ### CONTENT ###
         buttons = list()
         for b in range(len(self.buttons)):
-            button_b = button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.accent,accent_color=self.button_accent,width='92%',padding='1vh',radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse)
+            button_b = Button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.accent,accent_color=self.button_accent,width='92%',padding='1vh',radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse)
             button_b.id = 'navmenubutton'+str(b)
             button_b.cl = 'navmenubutton'
             buttons.append([button_b])
@@ -92,7 +92,7 @@ class header_obj:
         title.content = self.site_name
         buttons = list()
         for b in range(len(self.buttons)):
-            button_b = button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.button_primary,accent_color=self.button_accent,width=self.button_width,padding=self.button_padding,radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse,gradient=self.button_gradient)
+            button_b = Button(self.buttons[b][0],self.buttons[b][1],self.buttons[b][2],self.buttons[b][2],primary_color=self.button_primary,accent_color=self.button_accent,width=self.button_width,padding=self.button_padding,radius=self.button_radius,underline=self.button_underline,inverse=self.button_inverse,gradient=self.button_gradient)
             button_b.id = 'navbutton'+str(b)
             button_b.cl = 'navbutton'
             buttons.append(button_b)
