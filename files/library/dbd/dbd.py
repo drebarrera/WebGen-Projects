@@ -33,7 +33,6 @@ header.button_colors='rgb(250,250,250) #005580'
 header.button_width='auto 50px'
 header.button_padding='10px'
 header.nav_switch='750'
-#header.header_gradient = '-45deg, #23a6d5, #23d5ab'
 header.build()
 
 ### OBJECTS
@@ -52,6 +51,7 @@ slide2title = mx.T()
 slide2supertitle = mx.T()
 slide2leftsubtitle = mx.T()
 slide2right = mx.T()
+slide2iconlist = IconList()
 
 ### CONTENT
 body.content = [header, page]
@@ -68,11 +68,12 @@ slide1subcaption.content = "For more about me, visit my"
 
 # SLIDE 2
 slide2title_c.content = [slide2supertitle, slide2title]
-slide2.content = [[[slide2title_c]],[[slide2leftsubtitle],[slide2right]]]
-slide2supertitle.content = "Efficiency. Aesthetic. Authenticity"
-slide2title.content = "What I'm All About"
-slide2leftsubtitle.content = "Services"
+slide2.content = [[[slide2title_c]],[[slide2leftsubtitle,slide2iconlist],[slide2right]],[[]]]
+slide2supertitle.content = "Authentic, Aesthetic, and Effcicient"
+slide2title.content = 'DESIGN THAT WILL \n<span style="color: #99ff99; margin-left: 25px;">BLOW YOU AWAY</span>'
+slide2leftsubtitle.content = "Design Services"
 slide2right.content = "This is placeholder text for the description of services."
+slide2iconlist.content = [('images/vector_web1.png', 'Website Design', 'link' ,'https://www.drebarrera.com'),('images/vector_mine.png', 'Data Mining', 'link' ,'https://www.drebarrera.com'),('images/vector_web.png', 'Audio Production', 'link' ,'https://www.drebarrera.com'),('images/vector_web.png', 'Graphic Design', 'link' ,'https://www.drebarrera.com')]
 
 ### PROPERTIES
 #body.background_color = 'rgb(50,50,50)'
@@ -91,10 +92,12 @@ slide1button.primary = '#F35046'
 slide1button.accent = 'white'
 
 # SLIDE 2
-slide2.background_color = '#eeeeee'
+slide2.height = '800px'
+slide2.background_color = 'rgb(50,50,50)'
 slide2.id = 'slide2'
-slide2title.type = 'h2'
+slide2title.type = 'h1'
 slide2supertitle.type = 'h6'
+slide2supertitle.color = '#ccffcc'
 slide2leftsubtitle.type = 'h5'
 
 ### BUILD

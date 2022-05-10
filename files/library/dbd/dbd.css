@@ -15,8 +15,8 @@ p {
 	justify-content: flex-start;
 }
 
-#slide1sgrid_2_0 .ccslide{
-	/*align-content: flex-start;*/
+#slide2sgrid_1_0 .ccslide, #slide2sgrid_1_1 .ccslide{
+	align-content: flex-start;
 }
 
 #slide1button{
@@ -41,8 +41,24 @@ p {
 	filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.5));
 }
 
+#slide1button > p{
+	font-size: 18px !important;
+}
+
+#slide2sgrid > * p, #slide2sgrid > * h1, #slide2sgrid > * h6, #slide2sgrid > * h5{
+	color: #eeeeee;
+}
+
+#slide2sgrid_0_0{
+	align-items: center;
+}
+
 #slide2sgrid_0_0 .ccslide{
 	flex-direction: column;
+}
+
+#slide2sgrid_1_1 > p{
+	padding-right: 10px;
 }
 
 @media only screen and (max-width:750px) {

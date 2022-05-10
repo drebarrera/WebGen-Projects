@@ -69,3 +69,47 @@ class Slide():
 
     def c(self, inadmissible, dynamic):
         return self.Slide.c(inadmissible, dynamic)
+
+class IconListItem:
+    def __init__(self):
+        self.container = None
+        self.image_url = ''
+        self.text = ''
+        self.type = ''
+        self.action = ''
+
+    def c(self, inadmissible, dynamic):
+        self.container = mx.Link() if self.type == 'link' else mx.C()
+        if self.type == 'link': self.container.src = self.action
+        if self.type == 'click_f': self.container.onclick = self.action
+        img = mx.Image()
+        text = mx.T()
+        img.src = self.image_url
+        img.cl = 'iconlisticon'
+        text.content = self.text
+        text.cl = 'iconlisttext'
+        self.container.content = [img, text]
+        self.container.cl = 'iconlistitem'
+        return self.container.c(inadmissible, dynamic)
+
+class IconList:
+    def __init__(self):
+        self.container = mx.C()
+        self.list = mx.C()
+        self.content = []
+        self.id = ''
+
+    def c(self, inadmissible, dynamic):
+        self.container.cl = 'iconlistcontainer'
+        self.list.cl = 'iconlistlist'
+        if self.id != '': self.list.id = self.id
+        for x in self.content:
+            item = IconListItem()
+            item.image_url = x[0]
+            item.text = x[1]
+            item.type = x[2]
+            item.action = x[3]
+            self.list.content.append(item)
+        self.container.content = [self.list]   
+        return self.container.c(inadmissible, dynamic)
+            
