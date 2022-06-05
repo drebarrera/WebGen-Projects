@@ -45,20 +45,14 @@ p {
 	font-size: 18px !important;
 }
 
-#slide2sgrid > * p, #slide2sgrid > * h1, #slide2sgrid > * h6, #slide2sgrid > * h5{
-	color: #eeeeee;
-}
-
-#slide2sgrid_0_0{
-	align-items: center;
-}
-
-#slide2sgrid_0_0 .ccslide{
-	flex-direction: column;
-}
-
-#slide2sgrid_1_1 > p{
-	padding-right: 10px;
+.tile_slide_overlay {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 8;
+	pointer-events: none;
+	margin-left: 0;
+	left: 0;
 }
 
 @media only screen and (max-width:750px) {
