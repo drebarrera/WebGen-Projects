@@ -58,7 +58,7 @@ class header_obj:
         self.button_padding = button_padding
         self.navbar_rounded = False if navbar == 'normal' else True
         self.navbar_conditions = None if navbar == 'normal' else navbar
-        self.nav_switch = [5000,1250,1000,750,500][min(range(len([5000,1250,1000,750,500])), key = lambda i: abs([5000,1250,1000,750,500][i]-int(nav_switch)))]
+        self.nav_switch = [5000,1250,1000,750,500,0][min(range(len([5000,1250,1000,750,500,0])), key = lambda i: abs([5000,1250,1000,750,500,0][i]-int(nav_switch)))]
         self.position = position
         self.underline = '2px' if underline else '0px'
         self.base_url = base_url
