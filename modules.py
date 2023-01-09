@@ -14,6 +14,8 @@ class Data:
         self.viewport = "width=device-width, initial-scale=1"
         self.jquery_script = True
         self.jquery_ui_script = True
+        self.jquery_file = "..\JQuery.js"
+        self.jquery_ui_file = "..\JQuery-UI.js"
         self.scripts = []
             
     def c(self):
@@ -148,35 +150,8 @@ class NavTable:
         self.rowspan = {(a,b): 1 if (a,b) not in self.rowspan else self.rowspan[(a,b)] for a in range(len(self.content)) for b in range(len(self.content[a]))}
         content = [['<div id="'+self.id+"_"+str(i)+"_"+str(j)+'" style="display:table-cell;" colspan="'+str(self.colspan[(i,j)])+'" rowspan="'+str(self.rowspan[(i,j)])+'">'+self.content[i][j].c(inadmissible, dynamic)+'</div>' for j in range(len(self.content[i]))] for i in range(len(self.content))]
         [print("Dynamic elements should be written in css. Enter css to fix.\nERROR: "+self.name+":"+p) for p, v in vars(self).items() if p in dynamic]
-        return '<section'+i+c+' style="'+"".join([(p.replace("var__","--").replace("_","-")+":"+getattr(self, p))+";" for p, v in vars(self).items() if (p not in inadmissible and getattr(self, p) != "")])+'">'+"".join(['<header id="'+self.id+"_"+str(content.index(i))+'" style="display:table-row;">'+"".join(i)+"</header>" for i in content])+'</section>'
-
-# FlexTable -> Flex Element Table
-class FlexTable:
-    def __init__(self, background=False):
-        self.name = "flextable"
-        self.id = "flextable"
-        self.cl = "flextable"
-        self.background_color = "coral" if background == True else ""
-        self.content = [[]]
-        self.display = "flex"
-        self.flex_direction = "column"
-        self.colspan = {}
-        self.rowspan = {}
-        
-    def rows(self):
-        return len(self.content)
-
-    def cols(self):
-        return max([len(i) for i in self.content])
-    
-    def c(self, inadmissible, dynamic):
-        i = ' id="'+self.id+'"' if self.id != "" else ""
-        c = ' class="'+self.cl+'"' if self.cl != "" else ""
-        self.colspan = {(a,b): 1 if (a,b) not in self.colspan else self.colspan[(a,b)] for a in range(len(self.content)) for b in range(len(self.content[a]))}
-        self.rowspan = {(a,b): 1 if (a,b) not in self.rowspan else self.rowspan[(a,b)] for a in range(len(self.content)) for b in range(len(self.content[a]))}
-        content = [['<div id="'+self.id+"_"+str(i)+"_"+str(j)+'" style="display:flex; flex-direction:column; justify-content: center; width:'+str(100 * self.colspan[(i,j)]/sum([self.colspan[x] for x in self.colspan if x[0] == i]))+'%;" colspan="'+str(self.colspan[(i,j)])+'" rowspan="'+str(self.rowspan[(i,j)])+'">'+self.content[i][j].c(inadmissible, dynamic)+'</div>' for j in range(len(self.content[i]))] for i in range(len(self.content))]
-        [print("Dynamic elements should be written in css. Enter css to fix.\nERROR: "+self.name+":"+p) for p, v in vars(self).items() if p in dynamic]
-        return '<section'+i+c+' style="'+"".join([(p.replace("var__","--").replace("_","-")+":"+getattr(self, p))+";" for p, v in vars(self).items() if (p not in inadmissible and getattr(self, p) != "")])+'">'+"".join(['<header id="'+self.id+"_"+str(content.index(i))+'" style="display:flex; flex-direction: row; height:'+str(100/len(self.content))+'%;">'+"".join(i)+"</header>" for i in content])+'</section>'
+        x = '<section'+i+c+' style="'+"".join([(p.replace("var__","--").replace("_","-")+":"+getattr(self, p))+";" for p, v in vars(self).items() if (p not in inadmissible and getattr(self, p) != "")])+'">'+"".join(['<header id="'+self.id+"_"+str(content.index(i))+'" style="display:table-row;">'+"".join(i)+"</header>" for i in content])+'</section>'
+        return x
 
 # Nav -> Navigational Bar
 class Nav:
